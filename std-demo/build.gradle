@@ -1,15 +1,43 @@
 plugins {
     id 'org.jetbrains.kotlin.jvm' version '1.6.21'
+    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
 }
 
 group 'com.bulain.kotlin'
 version '1.0-SNAPSHOT'
 
-repositories {
-    mavenCentral()
-}
-
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib"
+
+    implementation 'org.slf4j:jul-to-slf4j'
+    implementation 'org.apache.logging.log4j:log4j-to-slf4j'
+    implementation 'ch.qos.logback:logback-classic'
+
+    implementation 'org.projectlombok:lombok'
+    implementation 'com.fasterxml.jackson.core:jackson-databind'
+    implementation 'com.zaxxer:HikariCP'
+    implementation 'com.github.ben-manes.caffeine:caffeine'
+
     implementation 'com.squareup.okhttp3:okhttp:4.9.3'
+    implementation 'com.squareup.okhttp3:logging-interceptor:4.9.3'
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    implementation 'com.squareup.retrofit2:converter-jackson:2.9.0'
+    implementation 'org.reactivestreams:reactive-streams:1.0.4'
+
+    implementation('org.apache.poi:poi-ooxml:5.2.2')
+    implementation('com.alibaba:easyexcel:3.1.0') {
+        exclude group: 'org.apache.poi', module: 'poi-ooxml-schemas'
+    }
+
+    testImplementation 'org.jetbrains.kotlin:kotlin-test-junit5'
+
+}
+
+dependencyManagement {
+    imports {
+        mavenBom 'org.springframework.boot:spring-boot-dependencies:2.7.0'
+    }
+    dependencies {
+        dependency 'org.jetbrains.kotlin:kotlin-test-junit5:1.6.21'
+    }
 }

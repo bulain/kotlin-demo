@@ -1,14 +1,37 @@
 plugins {
     id 'org.jetbrains.kotlin.jvm' version '1.6.21'
+    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
 }
 
 group 'com.bulain.kotlin'
 version '1.0-SNAPSHOT'
 
-repositories {
-    mavenCentral()
-}
-
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib"
+
+    implementation 'org.springframework.boot:spring-boot-starter-amqp'
+    implementation 'org.apache.rocketmq:rocketmq-spring-boot-starter'
+    implementation('io.seata:seata-spring-boot-starter') {
+        exclude group: 'com.alibaba', module: 'druid'
+    }
+    implementation 'com.baomidou:mybatis-plus-boot-starter'
+    implementation 'com.ctrip.framework.apollo:apollo-client'
+
+    testImplementation 'org.jetbrains.kotlin:kotlin-test-junit5'
+
+}
+
+dependencyManagement {
+    imports {
+        mavenBom 'org.springframework.boot:spring-boot-dependencies:2.7.0'
+        mavenBom 'org.springframework.cloud:spring-cloud-dependencies:2021.0.3'
+    }
+    dependencies {
+        dependency 'org.apache.rocketmq:rocketmq-spring-boot-starter:2.2.2'
+        dependency 'io.seata:seata-spring-boot-starter:1.5.1'
+        dependency 'com.baomidou:mybatis-plus-boot-starter:3.5.1'
+        dependency 'com.ctrip.framework.apollo:apollo-client:2.0.0'
+        dependency 'com.alibaba:fastjson:1.2.83'
+        dependency 'org.jetbrains.kotlin:kotlin-test-junit5:1.6.21'
+    }
 }
