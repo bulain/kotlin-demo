@@ -9,7 +9,9 @@ version '1.0-SNAPSHOT'
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib"
 
+    implementation 'org.slf4j:slf4j-api'
     implementation 'org.slf4j:jul-to-slf4j'
+    implementation 'org.slf4j:jcl-over-slf4j'
     implementation 'org.apache.logging.log4j:log4j-to-slf4j'
     implementation 'ch.qos.logback:logback-classic'
 
