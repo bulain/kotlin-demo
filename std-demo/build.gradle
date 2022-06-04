@@ -25,6 +25,7 @@ dependencies {
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
     implementation 'com.squareup.retrofit2:converter-jackson:2.9.0'
     implementation 'org.reactivestreams:reactive-streams:1.0.4'
+    implementation 'com.google.code.findbugs:jsr305:3.0.2'
 
     implementation('org.apache.poi:poi-ooxml:5.2.2')
     implementation('com.alibaba:easyexcel:3.1.0') {
