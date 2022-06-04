@@ -24,7 +24,7 @@ dependencies {
     implementation 'com.squareup.okhttp3:logging-interceptor:4.9.3'
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
     implementation 'com.squareup.retrofit2:converter-jackson:2.9.0'
-    implementation 'org.reactivestreams:reactive-streams:1.0.4'
+    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.9.0'
     implementation 'com.google.code.findbugs:jsr305:3.0.2'
 
     implementation('org.apache.poi:poi-ooxml:5.2.2')
@@ -32,6 +32,9 @@ dependencies {
         exclude group: 'org.apache.poi', module: 'poi-ooxml-schemas'
     }
 
+    implementation 'io.springfox:springfox-swagger2:3.0.0'
+
+    testImplementation 'com.squareup.retrofit2:retrofit-mock:2.9.0'
     testImplementation 'org.jetbrains.kotlin:kotlin-test-junit5'
 
 }
@@ -43,4 +46,8 @@ dependencyManagement {
     dependencies {
         dependency 'org.jetbrains.kotlin:kotlin-test-junit5:1.6.21'
     }
+}
+
+test {
+    useJUnitPlatform()
 }
